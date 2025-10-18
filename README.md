@@ -1,73 +1,58 @@
-# React + TypeScript + Vite
+# My Vite + React + TS Starter 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![CI/CD](https://github.com/harumaki1220/ts-react-starter/actions/workflows/cicd.yml/badge.svg)](https://github.com/harumaki1220/ts-react-starter/actions/workflows/cicd.yml)
 
-Currently, two official plugins are available:
+Vite + TypeScript + Reactのスターターテンプレートです。
+開発をすぐに始められるように、以下の基本的な設定が完了しています。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ 主な特徴 (Features)
 
-## React Compiler
+- **開発環境**: Vite, React, TypeScript
+- **コード品質**:
+  - ESLint (Prettierとの連携設定済み)
+  - Prettier
+- **CI/CD**:
+  - GitHub Actionsによる自動化
+  - `test` -> `build` -> `deploy` の3段階パイプライン
+  - GitHub Pagesへの自動デプロイ設定
+- **スタイリング**: CSS Modules
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ 使い方 (Available Scripts)
 
-## Expanding the ESLint configuration
+- `npm run dev`: 開発サーバーを起動します。
+- `npm run build`: プロダクション用にプロジェクトをビルドします。
+- `npm run lint`: ESLintでコードの静的解析を実行します。
+- `npm run typecheck`: TypeScriptで型チェックのみを実行します。
+- `npm run format`: Prettierを使ってプロジェクト全体のファイルを整形します。
+- `npm run format:check`: 整形が必要なファイルがないかチェックします（CIで使用）。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 プロジェクトの始め方 (Getting Started)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1.  このリポジトリのページで緑色の **"Use this template"** ボタンをクリックし、新しいリポジトリを作成します。
+2.  作成したリポジトリをローカルにクローンします。
+3.  ターミナルで `npm install` を実行して、必要なパッケージをインストールします。
+4.  `npm run dev` で開発を開始しましょう！
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ⚠️ 重要：デプロイ設定の変更
+
+このテンプレートはGitHub Pagesへのデプロイを前提としています。
+新しいリポジトリで正しくデプロイするために、**必ず以下の設定を変更してください。**
+
+### `vite.config.ts`
+`base`の値を、あなたの新しいリポジトリ名に合わせて変更します。
+
+```ts
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+  // ↓↓↓ この行をあなたのリポジトリ名に変更！
+  base: '/ts-react-starter/', 
+})
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+例: 新しいリポジトリ名が my-cool-app の場合
+```base: '/my-cool-app/',```
