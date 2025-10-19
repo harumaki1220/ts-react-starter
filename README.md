@@ -41,18 +41,19 @@ Vite + TypeScript + Reactのスターターテンプレートです。
 新しいリポジトリで正しくデプロイするために、**必ず以下の設定を変更してください。**
 
 ### `vite.config.ts`
+
 `base`の値を、あなたの新しいリポジトリ名に合わせて変更します。
 
 ```ts
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
   // ↓↓↓ この行をあなたのリポジトリ名に変更！
-  base: '/ts-react-starter/', 
-})
+  base: '/ts-react-starter/',
+});
 ```
 
 例: 新しいリポジトリ名が my-cool-app の場合
-```base: '/my-cool-app/',```
+`base: '/my-cool-app/',`
