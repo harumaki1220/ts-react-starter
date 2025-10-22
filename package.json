@@ -10,11 +10,11 @@
     "build": "npm run typecheck && vite build",
     "lint": "run-p lint:*",
     "lint:js": "eslint .",
-    "lint:prettier": "prettier --check . --ignore-path .gitignore",
     "lint:style": "stylelint \"src/**/*.{css,module.css}\" --ignore-path .gitignore",
-    "fix": "npm run lint:js -- --fix && npm run lint:style -- --fix && npm run lint:prettier -- --write",
+    "lint:prettier": "prettier --check . --ignore-path .gitignore",
+    "fix": "npm run lint:js -- --fix && npm run lint:style -- --fix && npm run format",
+    "format": "prettier --write . --ignore-path .gitignore",
     "preview": "vite preview",
-    "hcm": "hcm 'src/**/*.module.css'",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
